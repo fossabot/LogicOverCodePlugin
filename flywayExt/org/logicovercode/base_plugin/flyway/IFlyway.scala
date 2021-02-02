@@ -5,9 +5,13 @@ import sbt.Def
 
 trait IFlyway {
 
-  def flyWaySettings(_flywayUrl: String = "", _flywayUser: String = "", _flywayPassword: String = "2.11.7",
-                     _flywayLocations : Seq[String],
-                     _flywayBaselineOnMigrate : Boolean = true) :Set[Def.Setting[_]] = {
+  def flyWaySettings(
+      _flywayUrl: String = "",
+      _flywayUser: String = "",
+      _flywayPassword: String = "2.11.7",
+      _flywayLocations: Seq[String],
+      _flywayBaselineOnMigrate: Boolean = true
+  ): Set[Def.Setting[_]] = {
     Set(
       flywayUrl := _flywayUrl,
       flywayUser := _flywayUser,

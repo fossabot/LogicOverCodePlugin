@@ -5,7 +5,7 @@ import sbt._
 
 trait AllSpringDependencies {
 
-  case class SpringBootVersion(value : String)
+  case class SpringBootVersion(value: String)
 
   def springCore(version: String = "4.3.2.RELEASE"): ModuleID = {
     "org.springframework" % "spring-context" % version
@@ -19,7 +19,7 @@ trait AllSpringDependencies {
   case class SpringBootDependencies(releaseTag: SpringBootVersion) {
 
     def starterParent(): ModuleID = {
-      "org.springframework.boot" % "spring-boot-starter-parent" % releaseTag.value pomOnly()
+      "org.springframework.boot" % "spring-boot-starter-parent" % releaseTag.value pomOnly ()
     }
 
     def starterWeb(): ModuleID = {
@@ -54,20 +54,26 @@ trait AllSpringDependencies {
   val springCloudGreenWichRelease = "Greenwich.RELEASE"
   val latestSpriingCloudReleaseTag = springCloudGreenWichRelease
 
-  case class SpringCloud(releaseTag : SpringBootVersion = springBootVersion_2_2_5) {
+  case class SpringCloud(
+      releaseTag: SpringBootVersion = springBootVersion_2_2_5
+  ) {
 
-    val versionsMap = Map( "Greenwich.RELEASE" -> "2.1.0.RELEASE" )
+    val versionsMap = Map("Greenwich.RELEASE" -> "2.1.0.RELEASE")
 
     def dependencies(): ModuleID = {
-      "org.springframework.cloud" % "spring-cloud-dependencies" % releaseTag.value pomOnly()
+      "org.springframework.cloud" % "spring-cloud-dependencies" % releaseTag.value pomOnly ()
     }
 
     def starterOAuth2(): ModuleID = {
-      "org.springframework.cloud" % "spring-cloud-starter-oauth2" % versionsMap(releaseTag.value)
+      "org.springframework.cloud" % "spring-cloud-starter-oauth2" % versionsMap(
+        releaseTag.value
+      )
     }
 
     def starterSecurity(): ModuleID = {
-      "org.springframework.cloud" % "spring-cloud-starter-security" % versionsMap(releaseTag.value)
+      "org.springframework.cloud" % "spring-cloud-starter-security" % versionsMap(
+        releaseTag.value
+      )
     }
   }
 }

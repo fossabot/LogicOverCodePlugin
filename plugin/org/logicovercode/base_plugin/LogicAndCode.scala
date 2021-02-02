@@ -10,9 +10,13 @@ import sbt.{AutoPlugin, PluginTrigger, Plugins}
 
 object LogicAndCode extends AutoPlugin {
 
-  object autoImport extends SparkSettings
-    with AllDependencies with SbtResolvers with Licenses with DbDockerContainers
-    with ModuleBuildExtSettings
+  object autoImport
+      extends SparkSettings
+      with AllDependencies
+      with SbtResolvers
+      with Licenses
+      with DbDockerContainers
+      with ModuleBuildExtSettings
 
   override def trigger: PluginTrigger = Plugins.noTrigger
 

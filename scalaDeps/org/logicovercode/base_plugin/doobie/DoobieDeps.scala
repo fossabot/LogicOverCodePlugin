@@ -9,16 +9,16 @@ trait AllDoobieDependencies {
 
   final val doobieVersion_0_9_0 = DoobieVersion("0.9.0")
 
-  case class DoobieDependencies(version : DoobieVersion){
-    def core() : ModuleID = {
+  case class DoobieDependencies(version: DoobieVersion) {
+    def core(): ModuleID = {
       "org.tpolecat" %% "doobie-core" % version.value
     }
 
-    def specs2() : ModuleID = {
+    def specs2(): ModuleID = {
       "org.tpolecat" %% "doobie-specs2" % version.value
     }
 
-    def postgres() : ModuleID = {
+    def postgres(): ModuleID = {
       "org.tpolecat" %% "doobie-postgres" % version.value
     }
   }

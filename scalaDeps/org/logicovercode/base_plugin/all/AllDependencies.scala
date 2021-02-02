@@ -8,9 +8,12 @@ import org.logicovercode.bsbt.core.model.JvmModuleID
 import sbt._
 import sbt.librarymanagement.ModuleID
 
-trait AllDependencies extends
-  SparkDeps with AllSpringDependencies with
-  LogicWithCodeDeps with AllDoobieDependencies with DockerDependencies{
+trait AllDependencies
+    extends SparkDeps
+    with AllSpringDependencies
+    with LogicWithCodeDeps
+    with AllDoobieDependencies
+    with DockerDependencies {
 
   // Versions
   lazy val akkaVersion = "2.6.1"
@@ -40,13 +43,15 @@ trait AllDependencies extends
     "com.typesafe" % "config" % version
   }
 
-  def scalaJavaCompat(version : String = "0.9.1") : ModuleID = {
+  def scalaJavaCompat(version: String = "0.9.1"): ModuleID = {
     "org.scala-lang.modules" %% "scala-java8-compat" % version
   }
 
   def logging(version: String = "default"): Seq[JvmModuleID] = {
-    Seq("com.typesafe.scala-logging" %% "scala-logging" % "3.9.2",
-      "ch.qos.logback" % "logback-classic" % "1.1.2").map( JvmModuleID(_, None) )
+    Seq(
+      "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2",
+      "ch.qos.logback" % "logback-classic" % "1.1.2"
+    ).map(JvmModuleID(_, None))
   }
 
   def junit(version: String = "default"): ModuleID = {
@@ -96,7 +101,7 @@ trait AllDependencies extends
     "com.google.inject" % "guice" % version
   }
 
-  def gson(version : String = "2.8.6") : ModuleID = {
+  def gson(version: String = "2.8.6"): ModuleID = {
     "com.google.code.gson" % "gson" % version
   }
 
@@ -105,23 +110,23 @@ trait AllDependencies extends
   }
 
   @Deprecated
-  def akkaconfig(version: String = "1.3.3") : ModuleID = {
+  def akkaconfig(version: String = "1.3.3"): ModuleID = {
     "com.typesafe" % "config" % "1.3.3"
   }
 
-  def mysqlConnector(version: String = "5.1.47") : ModuleID = {
+  def mysqlConnector(version: String = "5.1.47"): ModuleID = {
     "mysql" % "mysql-connector-java" % version
   }
 
-  def cats_core(version : String = "2.1.0") : ModuleID = {
+  def cats_core(version: String = "2.1.0"): ModuleID = {
     "org.typelevel" %% "cats-core" % version
   }
 
-  def cats_effect(version : String = "2.1.4") : ModuleID = {
+  def cats_effect(version: String = "2.1.4"): ModuleID = {
     "org.typelevel" %% "cats-effect" % version
   }
 
-  def scalaj_http(version : String = "2.4.2") : ModuleID = {
+  def scalaj_http(version: String = "2.4.2"): ModuleID = {
     "org.scalaj" %% "scalaj-http" % version
   }
 }

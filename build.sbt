@@ -11,22 +11,25 @@ addDependencyTreePlugin
 val cto = Developer(
   "cto",
   "cto",
-  "cto@logicovercode.org",
+  "oss@logicovercode.com",
   url("https://github.com/logicovercode")
 )
-val githubRepo = GithubRepo("logicovercode", "LogicAndCodePlugin")
+val githubRepo = GithubRepo("logicovercode", "LogicOverCodePlugin")
 
-val moduleBuild = ModuleBuild("org.logicovercode", "fluent-style-sbt", "0.0.2")
+val moduleBuild = ModuleBuild("org.logicovercode", "fluent-style-sbt", "0.0.3")
   .sourceDirectories(
-    "spark",
-    "springboot",
-    "scalaDeps",
+    "dependencies/model",
+    "dependencies/spark",
+    "dependencies/springboot",
+    "dependencies/scala",
     "licenses",
     "resolvers",
     "plugin",
     "dockerContainers",
     "flywayExt"
   )
+  //TODO : make this dependency conditional, depending on jdk version
+  .dependencies("javax.activation" % "activation" % "1.1.1")
   .sbtPlugins(
     "org.logicovercode" % "fluent-style-sbt-core" % "0.0.2",
     /*this will automatically fetch flyway-sbt, sbt-pack, scalafmt for sbt projects that depends on LogicAndCode*/

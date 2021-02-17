@@ -7,6 +7,9 @@ trait AllDoobieDependencies {
 
   case class DoobieVersion(value: String)
 
+  final val doobie_0_9_0 = DoobieVersion("0.9.0")
+
+  @Deprecated
   final val doobieVersion_0_9_0 = DoobieVersion("0.9.0")
 
   case class DoobieDependencies(version: DoobieVersion) {

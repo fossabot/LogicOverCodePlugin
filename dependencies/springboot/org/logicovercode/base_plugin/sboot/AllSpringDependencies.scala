@@ -11,6 +11,9 @@ trait AllSpringDependencies {
     "org.springframework" % "spring-context" % version
   }
 
+  val springBoot_2_3_0 = SpringBootVersion("2.3.0.RELEASE")
+
+  @Deprecated
   val springBootVersion_2_3_0 = SpringBootVersion("2.3.0.RELEASE")
 
   @Deprecated

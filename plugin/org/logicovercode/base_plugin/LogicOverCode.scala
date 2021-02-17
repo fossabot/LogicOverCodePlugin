@@ -8,7 +8,7 @@ import org.logicovercode.base_plugin.spark.SparkSettings
 import org.logicovercode.bsbt.BuilderStyleBuild
 import sbt.{AutoPlugin, PluginTrigger, Plugins}
 
-object LogicAndCode extends AutoPlugin {
+object LogicOverCode extends AutoPlugin {
 
   object autoImport
       extends SparkSettings

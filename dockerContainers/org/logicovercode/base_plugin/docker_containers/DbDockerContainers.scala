@@ -11,18 +11,21 @@ trait DbDockerContainers {
       containerName: String,
       dbUser: String,
       dbPassword: String,
-      ports: (Int, Int),
+      hostPort: Int,
       schema: String,
       initDir: String,
-      val host: String = sys.env("DB_HOST")
+      host: String = "localhost"
   ) extends IDockerContainer {
+
+    val dbContainerPort = 3306
+
     override def instance(): DockerContainer = {
       val imageName: String = "mogli/smysql"
-      val _ @(hostPort, dbContainerPort) = ports
+
       val dbContainer = DockerContainer(imageName, Option(containerName))
         .withEnv(s"MYSQL_ROOT_PASSWORD=$dbPassword")
         .withCommand(dbUser, dbPassword, dbContainerPort + "", schema)
-        .withPorts(hostPort -> Some(dbContainerPort))
+        .withPorts(dbContainerPort -> Some(hostPort))
         .withReadyChecker(
           DockerReadyChecker.LogLineContains(
             s"[healthCheck] : container ready for use"
@@ -33,7 +36,6 @@ trait DbDockerContainers {
     }
 
     override def settings(): Set[Def.Setting[_]] = {
-      val _ @(hostPort, _) = ports
       val url = s"jdbc:mysql://${host}:$hostPort/$schema"
 
       println(s"flyway url is >$url<")
@@ -54,18 +56,20 @@ trait DbDockerContainers {
       containerName: String,
       dbUser: String,
       dbPassword: String,
-      ports: (Int, Int),
+      hostPort: Int,
       schema: String,
       initDir: String,
-      host: String = sys.env("DB_HOST")
+      host: String = "localhost"
   ) extends IDockerContainer {
+
+    val dbContainerPort = 5432
+
     override def instance(): DockerContainer = {
       val imageName: String = "mogli/spostgres"
-      val _ @(hostPort, dbContainerPort) = ports
       val dbContainer = DockerContainer(imageName, Option(containerName))
         .withEnv(s"POSTGRES_PASSWORD=$dbPassword")
         .withCommand(dbUser, dbPassword, dbContainerPort + "", schema)
-        .withPorts(hostPort -> Some(dbContainerPort))
+        .withPorts(dbContainerPort -> Some(hostPort))
         .withReadyChecker(
           DockerReadyChecker.LogLineContains(
             s"[healthCheck] : container ready for use"
@@ -76,7 +80,6 @@ trait DbDockerContainers {
     }
 
     override def settings(): Set[Def.Setting[_]] = {
-      val _ @(hostPort, _) = ports
       val url = s"jdbc:postgresql://${host}:$hostPort/$schema"
 
       println(s"flyway url is >$url<")

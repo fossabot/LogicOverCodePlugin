@@ -28,6 +28,10 @@ trait ScalaVersionedDependencies {
   }
 
   val scalaTest_3_2_3 = Version("3.2.3")
+
+  def scala_test(version: Version): ModuleID = scalatest(version.version)
+
+  @Deprecated
   def scalatest(version: Version): ModuleID = scalatest(version.version)
   @Deprecated
   def scalatest(version: String = "3.2.3"): ModuleID = {

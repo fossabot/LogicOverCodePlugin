@@ -7,67 +7,49 @@ import sbt._
 trait ScalaVersionedDependencies {
 
   val catsCore_2_4_1 = Version("2.4.1")
-  def cats_core(version: Version): ModuleID = cats_core(version.version)
+  def cats_core(version: Version = catsCore_2_4_1): ModuleID = cats_core(version.version)
   @Deprecated
-  def cats_core(version: String = "2.4.1"): ModuleID = {
-    "org.typelevel" %% "cats-core" % version
-  }
+  def cats_core(version: String): ModuleID = "org.typelevel" %% "cats-core" % version
 
   val catsEffect_2_3_1 = Version("2.3.1")
-  def cats_effect(version: Version): ModuleID = cats_effect(version.version)
+  def cats_effect(version: Version = catsEffect_2_3_1): ModuleID = cats_effect(version.version)
   @Deprecated
-  def cats_effect(version: String = "2.3.1"): ModuleID = {
-    "org.typelevel" %% "cats-effect" % version
-  }
+  def cats_effect(version: String): ModuleID = "org.typelevel" %% "cats-effect" % version
 
   val scalajHttp_2_4_2 = Version("2.4.2")
-  def scalaj_http(version: Version): ModuleID = scalaj_http(version.version)
+  def scalaj_http(version: Version = scalajHttp_2_4_2): ModuleID = scalaj_http(version.version)
   @Deprecated
-  def scalaj_http(version: String = "2.4.2"): ModuleID = {
-    "org.scalaj" %% "scalaj-http" % version
-  }
+  def scalaj_http(version: String): ModuleID = "org.scalaj" %% "scalaj-http" % version
 
   val scalaTest_3_2_3 = Version("3.2.3")
-
-  def scala_test(version: Version): ModuleID = scalatest(version.version)
-
+  def scala_test(version: Version = scalaTest_3_2_3): ModuleID = scalatest(version.version)
   @Deprecated
-  def scalatest(version: Version): ModuleID = scalatest(version.version)
+  def scalatest(version: Version = scalaTest_3_2_3): ModuleID = scalatest(version.version)
   @Deprecated
-  def scalatest(version: String = "3.2.3"): ModuleID = {
-    "org.scalatest" %% "scalatest" % version
-  }
+  def scalatest(version: String): ModuleID = "org.scalatest" %% "scalatest" % version
 
   val betterFiles_3_9_1 = Version("3.9.1")
-  def better_files(version: Version): ModuleID = better_files(version.version)
+  def better_files(version: Version = betterFiles_3_9_1): ModuleID = better_files(version.version)
   @Deprecated
-  def better_files(version: String = "3.9.1"): ModuleID = {
-    "com.github.pathikrit" %% "better-files" % version
-  }
+  def better_files(version: String): ModuleID = "com.github.pathikrit" %% "better-files" % version
 
   val scalaJava8Compat_0_9_1 = Version("0.9.1")
-  def scala_java8_compat(version: Version): ModuleID = scalaJavaCompat(
-    version.version
-  )
+  def scala_java8_compat(version: Version = scalaJava8Compat_0_9_1): ModuleID = scala_java8_compat(version.version)
   @Deprecated
-  def scalaJavaCompat(version: String = "0.9.1"): ModuleID = {
-    "org.scala-lang.modules" %% "scala-java8-compat" % version
-  }
+  def scala_java8_compat(version: String): ModuleID = "org.scala-lang.modules" %% "scala-java8-compat" % version
 
   val jacksonModuleScala_2_12_1 = Version("2.12.1")
-  def jackson_module_scala(version: Version): ModuleID = scalaJackson(
-    version.version
-  )
+  def jackson_module_scala(version: Version = jacksonModuleScala_2_12_1): ModuleID = jackson_module_scala(version.version)
   @Deprecated
-  def scalaJackson(version: String = "2.12.1"): ModuleID = {
-    "com.fasterxml.jackson.module" %% "jackson-module-scala" % version
-  }
+  def jackson_module_scala(version: String): ModuleID = "com.fasterxml.jackson.module" %% "jackson-module-scala" % version
 
   val scalaParallelCollections_1_0_0 = Version("1.0.0")
-  def scala_parallel_collections(version: Version): ModuleID =
-    scalaParallelCollections(version.version)
+  def scala_parallel_collections(version: Version = scalaParallelCollections_1_0_0): ModuleID = scala_parallel_collections(version.version)
   @Deprecated
-  def scalaParallelCollections(version: String = "1.0.0"): ModuleID = {
-    "org.scala-lang.modules" %% "scala-parallel-collections" % version
-  }
+  def scala_parallel_collections(version: String): ModuleID = "org.scala-lang.modules" %% "scala-parallel-collections" % version
+
+  val playJson_2_9_2 = Version("2.9.2")
+  def play_json(version: Version = playJson_2_9_2): ModuleID = play_json(version.version)
+  @Deprecated
+  def play_json(version: String): ModuleID = "com.typesafe.play" %% "play-json" % version
 }

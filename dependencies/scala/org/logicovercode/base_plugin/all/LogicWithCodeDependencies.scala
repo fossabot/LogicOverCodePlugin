@@ -6,7 +6,5 @@ import sbt._
 trait LogicWithCodeDependencies {
 
   @Deprecated
-  def lang_utils(version: String = "1.0-SNAPSHOT"): ModuleID = {
-    "org.mogli" %% "langutils" % version
-  }
+  def lang_utils(version: String = "1.0-SNAPSHOT"): ModuleID = "org.mogli" %% "langutils" % version
 }

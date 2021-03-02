@@ -14,7 +14,8 @@ trait AllDependencies
     with AllDoobieDependencies
     with JavaVersionedDependencies
     with ScalaVersionedDependencies
-    with DockerDependencies {
+    with DockerDependencies
+    with LogicOverCodeDependencies {
 
   // Versions
   lazy val akkaVersion = "2.6.1"

@@ -4,7 +4,7 @@ import org.logicovercode.base_plugin.Version
 import sbt.librarymanagement.ModuleID
 import sbt._
 
-trait ScalaVersionedDependencies {
+trait ScalaDependencies {
 
   val catsCore_2_4_1 = Version("2.4.1")
   def cats_core(version: Version = catsCore_2_4_1): ModuleID = cats_core(version.version)

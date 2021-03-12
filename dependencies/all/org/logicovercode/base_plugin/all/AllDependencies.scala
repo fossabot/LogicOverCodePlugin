@@ -10,10 +10,10 @@ import sbt.librarymanagement.ModuleID
 trait AllDependencies
     extends SparkDeps
     with AllSpringDependencies
-    with LogicWithCodeDependencies
     with AllDoobieDependencies
-    with JavaVersionedDependencies
-    with ScalaVersionedDependencies
+    with JdkDependencies
+    with Jdk11Dependencies
+    with ScalaDependencies
     with DockerDependencies
     with LogicOverCodeDependencies {
 

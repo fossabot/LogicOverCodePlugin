@@ -16,12 +16,12 @@ val cto = Developer(
 )
 val githubRepo = GithubRepo("logicovercode", "LogicOverCodePlugin")
 
-val moduleBuild = ModuleBuild("org.logicovercode", "fluent-style-sbt", "0.0.4")
+val moduleBuild = ModuleBuild("org.logicovercode", "fluent-style-sbt", "0.0.5")
   .sourceDirectories(
     "dependencies/model",
     "dependencies/spark",
     "dependencies/springboot",
-    "dependencies/scala",
+    "dependencies/all",
     "licenses",
     "resolvers",
     "plugin",
@@ -31,7 +31,7 @@ val moduleBuild = ModuleBuild("org.logicovercode", "fluent-style-sbt", "0.0.4")
   //TODO : make this dependency conditional, depending on jdk version
   .dependencies("javax.activation" % "activation" % "1.1.1")
   .sbtPlugins(
-    "org.logicovercode" % "fluent-style-sbt-core" % "0.0.3",
+    "org.logicovercode" % "fluent-style-sbt-core" % "0.0.4",
     /*this will automatically fetch flyway-sbt, sbt-pack, scalafmt for sbt projects that depends on LogicAndCode*/
     "io.github.davidmweber" % "flyway-sbt" % "6.5.0",
     "org.xerial.sbt" % "sbt-pack" % "0.13",

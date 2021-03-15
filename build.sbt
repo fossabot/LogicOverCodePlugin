@@ -26,16 +26,18 @@ val moduleBuild = ModuleBuild("org.logicovercode", "fluent-style-sbt", "0.0.5")
     "resolvers",
     "plugin",
     "dockerContainers",
-    "flywayExt"
+    "flywayExt",
+    "java-proto-support"
   )
   //TODO : make this dependency conditional, depending on jdk version
   .dependencies("javax.activation" % "activation" % "1.1.1")
   .sbtPlugins(
     "org.logicovercode" % "fluent-style-sbt-core" % "0.0.4",
-    /*this will automatically fetch flyway-sbt, sbt-pack, scalafmt for sbt projects that depends on LogicAndCode*/
+    /*this will automatically fetch flyway-sbt, sbt-pack, scalafmt for sbt projects that depends on fluent-style-sbt*/
     "io.github.davidmweber" % "flyway-sbt" % "6.5.0",
     "org.xerial.sbt" % "sbt-pack" % "0.13",
-    "org.scalameta" % "sbt-scalafmt" % "2.4.0"
+    "org.scalameta" % "sbt-scalafmt" % "2.4.0",
+    "com.thesamet" % "sbt-protoc" % "1.0.0"
   )
   .argsRequiredForPublishing(
     List(cto),

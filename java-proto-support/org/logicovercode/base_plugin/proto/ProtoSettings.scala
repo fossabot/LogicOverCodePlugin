@@ -1,11 +1,9 @@
 package org.logicovercode.base_plugin.proto
 
 
-import org.logicovercode.base_plugin.LogicOverCode.autoImport.SbtBuild
 import org.logicovercode.base_plugin.Version
 import org.logicovercode.bsbt.core.model.ModuleBuild
 import sbt._
-import sbt.Keys._
 import sbtprotoc.ProtocPlugin.autoImport.{AsProtocPlugin, PB}
 
 trait ProtoSettings {

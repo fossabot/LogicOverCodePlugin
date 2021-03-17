@@ -1,10 +1,11 @@
 package org.logicovercode.base_plugin.all
 
 import org.logicovercode.base_plugin.Version
-import sbt.librarymanagement.ModuleID
+import org.logicovercode.base_plugin.scala.{Http4sDependencies, TpolecatDoobieDependencies}
 import sbt._
+import sbt.librarymanagement.ModuleID
 
-trait ScalaDependencies {
+trait ScalaDependencies extends TpolecatDoobieDependencies with Http4sDependencies {
 
   val catsCore_2_4_1 = Version("2.4.1")
   def cats_core(version: Version = catsCore_2_4_1): ModuleID = cats_core(version.version)
@@ -52,4 +53,9 @@ trait ScalaDependencies {
   def play_json(version: Version = playJson_2_9_2): ModuleID = play_json(version.version)
   @Deprecated
   def play_json(version: String): ModuleID = "com.typesafe.play" %% "play-json" % version
+
+  val logbackClassic_1_2_3 = Version("1.2.3")
+  def logback_classic(version: Version = logbackClassic_1_2_3): ModuleID = logback_classic(version.version)
+  @Deprecated
+  def logback_classic(version: String): ModuleID = "ch.qos.logback" % "logback-classic" % version
 }

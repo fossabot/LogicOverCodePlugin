@@ -1,6 +1,5 @@
 package org.logicovercode.base_plugin.all
 
-import org.logicovercode.base_plugin.doobie.AllDoobieDependencies
 import org.logicovercode.base_plugin.sboot.AllSpringDependencies
 import org.logicovercode.base_plugin.spark.SparkDeps
 import org.logicovercode.bsbt.core.model.JvmModuleID
@@ -10,7 +9,6 @@ import sbt.librarymanagement.ModuleID
 trait AllDependencies
     extends SparkDeps
     with AllSpringDependencies
-    with AllDoobieDependencies
     with JdkDependencies
     with Jdk11Dependencies
     with ScalaDependencies

@@ -16,7 +16,7 @@ val cto = Developer(
 )
 val githubRepo = GithubRepo("logicovercode", "LogicOverCodePlugin")
 
-val moduleBuild = ModuleBuild("org.logicovercode", "fluent-style-sbt", "0.0.52")
+val moduleBuild = ModuleBuild("org.logicovercode", "fluent-style-sbt", "0.0.521")
   .sourceDirectories(
     "dependencies/model",
     "dependencies/spark",
@@ -37,9 +37,10 @@ val moduleBuild = ModuleBuild("org.logicovercode", "fluent-style-sbt", "0.0.52")
     "io.github.davidmweber" % "flyway-sbt" % "6.5.0",
     "org.xerial.sbt" % "sbt-pack" % "0.13",
     "org.scalameta" % "sbt-scalafmt" % "2.4.0",
-    "com.thesamet" % "sbt-protoc" % "1.0.0",
     "com.github.cb372" % "sbt-explicit-dependencies" % "0.2.16"
   )
+  .sbtPlugins("com.thesamet" % "sbt-protoc" % "1.0.0")
+  .dependencies("com.thesamet.scalapb" %% "compilerplugin" % "0.9.0")
   .argsRequiredForPublishing(
     List(cto),
     license,

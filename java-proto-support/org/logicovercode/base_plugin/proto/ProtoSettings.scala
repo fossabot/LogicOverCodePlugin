@@ -21,6 +21,7 @@ trait ProtoSettings {
 
   implicit class ModuleBuildArtifactProtoExtension(moduleBuild: ModuleBuild) {
 
+    @Deprecated
     def protoGenTargetDirectories(generatedJavaPath: String, generatedGrpcPath: String): ModuleBuild = {
 
       val _settings: Seq[Def.Setting[_]] = Seq(
@@ -33,7 +34,46 @@ trait ProtoSettings {
       val allSettings = moduleBuild.settings.toSet ++ _settings
       ModuleBuild(allSettings)
     }
-  }
 
+    def protoSourceDirectories(sourceDirs: String*): ModuleBuild = {
+      val protoSourceDirectories = sourceDirs.map(new File(_))
+
+      val _settings: Seq[Def.Setting[_]] = Seq(
+        PB.protoSources in Compile := protoSourceDirectories
+      )
+      val allSettings = moduleBuild.settings.toSet ++ _settings
+      ModuleBuild(allSettings)
+    }
+
+    def protoJavaTargetDir(protoBufferCodeGenDir: String): ModuleBuild = {
+      protoJavaTargetDir(protoBufferCodeGenDir, None)
+    }
+
+    def protoJavaTargetDir(protoBufferCodeGenDir: String, grpcCodeGenDir: String): ModuleBuild = {
+      protoJavaTargetDir(protoBufferCodeGenDir, Option(grpcCodeGenDir))
+    }
+
+    private def protoJavaTargetDir(protoBufferCodeGenDir: String, grpcCodeGenDir: Option[String]): ModuleBuild = {
+
+      val _settings: Seq[Def.Setting[_]] = Seq(
+        Compile / PB.targets := (grpcCodeGenDir match {
+          case Some(grpcDir) => Seq(PB.gens.java -> new File(protoBufferCodeGenDir), PB.gens.plugin("grpc-java") -> new File(grpcDir))
+          case None          => Seq(PB.gens.java -> new File(protoBufferCodeGenDir))
+        })
+      )
+      val allSettings = moduleBuild.settings.toSet ++ _settings
+      ModuleBuild(allSettings)
+    }
+
+    def protoScalaTargetDir(codeGenDir: String, generateGrpcCode: Boolean = false): ModuleBuild = {
+      val _settings: Seq[Def.Setting[_]] = Seq(
+        Compile / PB.targets := Seq(
+          scalapb.gen(grpc = generateGrpcCode) -> new File(codeGenDir)
+        )
+      )
+      val allSettings = moduleBuild.settings.toSet ++ _settings
+      ModuleBuild(allSettings)
+    }
+  }
 
 }

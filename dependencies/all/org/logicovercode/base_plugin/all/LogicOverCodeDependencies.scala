@@ -25,4 +25,9 @@ trait LogicOverCodeDependencies {
   def tc_process(version: Version = tcProcess_0_0_1): ModuleID = tc_process(version.version)
   @Deprecated
   def tc_process(version: String): ModuleID = "com.logicovercode" %% "tc-process" % version
+
+  val jsonizer_0_0_1 = Version("0.0.1")
+  def jsonizer(version: Version = jsonizer_0_0_1): ModuleID = jsonizer(version.version)
+  @Deprecated
+  def jsonizer(version: String): ModuleID = "com.logicovercode" %% "jsonizer" % version
 }

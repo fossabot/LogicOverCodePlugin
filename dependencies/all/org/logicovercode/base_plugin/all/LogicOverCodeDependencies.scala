@@ -30,4 +30,9 @@ trait LogicOverCodeDependencies {
   def jsonizer(version: Version = jsonizer_0_0_1): ModuleID = jsonizer(version.version)
   @Deprecated
   def jsonizer(version: String): ModuleID = "com.logicovercode" %% "jsonizer" % version
+
+  val jawrCore_0_0_1 = Version("0.0.1")
+  def jawt_core(version: Version = jawrCore_0_0_1): ModuleID = jawt_core(version.version)
+  @Deprecated
+  def jawt_core(version: String): ModuleID = "com.logicovercode" %% "jsonizer" % version
 }

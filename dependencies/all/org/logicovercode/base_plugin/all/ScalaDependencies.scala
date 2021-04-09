@@ -22,12 +22,17 @@ trait ScalaDependencies extends TpolecatDoobieDependencies with Http4sDependenci
   @Deprecated
   def scalaj_http(version: String): ModuleID = "org.scalaj" %% "scalaj-http" % version
 
-  val scalaTest_3_2_3 = Version("3.2.3")
-  def scala_test(version: Version = scalaTest_3_2_3): ModuleID = scalatest(version.version)
+  val scalaTest_3_2_7 = Version("3.2.7")
+  def scala_test(version: Version = scalaTest_3_2_7): ModuleID = scalatest(version.version)
   @Deprecated
-  def scalatest(version: Version = scalaTest_3_2_3): ModuleID = scalatest(version.version)
+  def scalatest(version: Version = scalaTest_3_2_7): ModuleID = scalatest(version.version)
   @Deprecated
   def scalatest(version: String): ModuleID = "org.scalatest" %% "scalatest" % version
+
+  val scalaTestFreeSpec_3_2_7 = Version("3.2.7")
+  def scala_test_free_spec(version: Version = scalaTestFreeSpec_3_2_7): ModuleID = scala_test_free_spec(version.version)
+  @Deprecated
+  def scala_test_free_spec(version: String): ModuleID = "org.scalatest" %% "scalatest" % version
 
   val betterFiles_3_9_1 = Version("3.9.1")
   def better_files(version: Version = betterFiles_3_9_1): ModuleID = better_files(version.version)
